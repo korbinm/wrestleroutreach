@@ -1,0 +1,232 @@
+body {
+  font: 15px/1.5 Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+button{
+  background-color: #FF6A3D;
+  border-radius: 3px;
+  border-color: #1A2238;
+  padding: 10px 24px;
+  color:#FFFFFF;
+}
+button:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #1A2238;
+  color: #FFFFFF;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #FF6A3D 3px solid;
+}
+
+header a {
+  color: #FFFFFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+header li {
+  float: left;
+  display: inline;
+  padding: 0 20px 0 20px;
+}
+
+header #branding {
+  float: left;
+
+}
+
+header #branding h1 {
+  margin:0px;
+  padding-left: 5px;
+}
+
+header nav {
+  float: right;
+  margin-top: 10px;
+}
+
+header .highlight, header .current a {
+  color: #9DAAF2;
+  font-weight: bold;
+}
+
+#showcase {
+  min-height: 400px;
+  background-image: url("images/mats.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  margin-top: -100px;
+  color: #FFFFFF;
+  border-bottom: #FF6A3D 3px solid;
+  font-weight: bold;
+}
+
+#showcase h1 {
+  margin-top: 100px;
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+#showcase p {
+  font-size: 20px;
+}
+
+#boxes {
+  margin-top: 20px;
+}
+
+#boxes .box {
+  float: left;
+  text-align: center;
+  width: 30%;
+  padding: 10px;
+}
+
+#boxes .box img {
+  width: 90px;
+  height: 90px;
+}
+
+#services {
+  display: flex;
+  font-size: 30px;
+  list-style-type: none;
+  width: 60%;
+  margin: 8% auto auto;
+  padding:4px;
+  border-color: #FF6A3D;
+  border-left-style: solid;
+  justify-content: center;
+  align-items: center;
+
+}
+#services #info{
+  padding:20px;
+  width:50%;
+  text-align: left;
+}
+
+#services #loginregister{
+  border-left: 1px solid #1A2238;
+  padding: 20px;
+  width: 50%;
+  font-size: 15px;
+
+}
+#services #loginregister input{
+  width:80%;
+  font-size: 20px;
+  padding: 12px 20px;
+  margin: 8px 0;
+}
+#services #loginregister p{
+  color:red;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/*CSS for registration page*/
+#register{
+  border: 1px solid #FF6A3D;
+  width: 40%;
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+  list-style-type: none;
+}
+
+#register label{
+  padding-right: 20px;
+}
+
+#register input[type=text], input[type=password]{
+  margin-left: 8px;
+  font-size: 20px;
+  width: 90%;
+}
+
+#register input[type=submit] {
+  margin-left: 8px;
+  font-size: 20px;
+  width: 40%;
+}
+.error{
+  width:40%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  color:red;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/*Dashboard css*/
+
+.submitvid{
+  width:20%;
+  padding:2px;
+  margin-top: 30px;
+  margin-left: 20%;
+  margin-right: 80%;
+  border: 3px solid #FF6A3D;
+}
+.submitvid textarea {
+  resize: none;
+  margin-top: 5px;
+  width:90%;
+  height:20px;
+  -webkit-transition: height 1s ease-in-out;
+  transition: height 1s ease-in-out;
+}
+
+.submitvid textarea:focus{
+  height:300px;
+}
+
+.videos{
+  width:60%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid #FF6A3D;
+  height: 630px;
+  overflow-y: auto;
+}
+.videos table{
+  width:100%;
+  padding:15px;
+}
+.videos iframe{
+  width:90%;
+  height: 315px;
+}
+.videos #vid{
+  text-align:center;
+}
+.videos td{
+  width: 50%;
+}
+.videos th, td{
+  border-bottom: 1px solid #1A2238;
+  padding-bottom: 15px;
+}
