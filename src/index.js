@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./webpages/Layout.js";
 import Home from "./webpages/home.js";
 import Dashboard from "./webpages/Dashboard";
+import Register from "./webpages/Register.js";
 //import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,6 +16,7 @@ export default function App(){
                 <Route path = "/" element = {<Layout />}>
                     <Route index element = {<Home />} />
                     <Route path = "dashboard" element = {<Dashboard />} />
+                    <Route path = "register" element = {<Register />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -3,9 +3,11 @@ import arrow from '../images/arrow.png';
 import play from '../images/playbutton.png';
 import '../App.css';
 import React from "react";
+const {REACT_APP_DB_KEY} = process.env;
 
 const Home = () => {
-  return (
+    alert(REACT_APP_DB_KEY);
+    return (
       <div className="container">
           <section id="showcase">
               <h1>Wrestling Technique Anywhere</h1>
@@ -36,6 +38,7 @@ const Home = () => {
               </div>
           </section>
       </div>
+
   )
 };
 export default Home;
