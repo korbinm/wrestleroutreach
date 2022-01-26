@@ -6,7 +6,6 @@ import React from "react";
 const {REACT_APP_DB_KEY} = process.env;
 
 const Home = () => {
-    alert(REACT_APP_DB_KEY);
     return (
       <div className="container">
           <section id="showcase">

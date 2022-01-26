@@ -1,10 +1,17 @@
 import React from 'react'
+import ReactDOM from 'react-dom';
+import {Text} from 'react-native';
+
 import replay from './images/replay.png';
 import arrow from './images/arrow.png';
 import play from './images/playbutton.png';
 import './App.css';
+export default class App extends React.Component{
+    render(){
+<h1>appjs</h1>
+    }
+}
 
-function App() {
     //return (
         // <div className="container">
         //     {/*<header>*/}
@@ -48,6 +55,5 @@ function App() {
         //     </section>
         // </div>
     //)
-}
 
-export default App;
+
