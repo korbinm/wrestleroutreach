@@ -23,8 +23,10 @@
   "scripts": {
     "webpack": "webpack-dev-server --config ./webpack.config.js",
     "dev": "webpack-cli serve --mode development --config ./webpack.config.js",
-    "build": "run-p build:***",
+    "build": "react-scripts build",
     "start":"react-scripts start"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
