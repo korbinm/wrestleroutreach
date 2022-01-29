@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "browserify": "^17.0.0",
+    "babel-loader": "^8.2.3",
     "fauna": "^0.4.1",
     "faunadb": "^4.4.1",
     "netlify-cli": "^8.6.18",
@@ -16,11 +16,15 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.0",
     "uniq": "^1.0.1",
-    "web-vitals": "^2.1.2"
+    "web-vitals": "^2.1.2",
+    "webpack": "^5.67.0",
+    "webpack-dev-server": "^4.7.3"
   },
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "build": "webpack --mode production"
+    "webpack": "webpack-dev-server --config ./webpack.config.js",
+    "dev": "webpack-cli serve --mode development --config ./webpack.config.js",
+    "build": "npm run build",
+    "start":"react-scripts start"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +48,9 @@
     "[module-name}": false
   },
   "devDependencies": {
+    "babel-install": "2.1.0",
     "dotenv-webpack": "^7.0.3",
+    "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "webpack-cli": "^4.9.2"
   }
