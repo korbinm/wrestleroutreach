@@ -21,6 +21,9 @@ module.exports = {
                         presets: ["@babel/preset-env", "@babel/preset-react"],
                     },
                 },
+                resolve:{
+                  fullySpecified: false,
+                }
             },
             {
                 test:/\.(gif|png|jpe?g|svg)$/i,
@@ -37,16 +40,6 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             },
-            {
-                test: /\.m?js/,
-                type: "javascript/auto",
-            },
-            {
-                test: /\.m?js/,
-                resolve: {
-                    fullySpecified: false,
-  },
-},
         ],
     },
     plugins: [
