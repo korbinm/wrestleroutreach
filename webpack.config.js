@@ -65,6 +65,18 @@ module.exports = {
         },
         extensions: [".web.js",".js",".jsx",".ts",".tsx"]
     },
+    "exports": {
+    ".": {
+      "import": "./dist/abort-controller.mjs",
+      "require": "./dist/abort-controller.js",
+      "default": "./dist/abort-controller.js"
+    },
+    "./polyfill": {
+      "import": "./polyfill.mjs",
+      "require": "./polyfill.js",
+      "default": "./polyfill.js"
+    }
+  }
 };
 // module.exports = {
 //     entry: path.resolve(__dirname, 'src') + '/index.js',
