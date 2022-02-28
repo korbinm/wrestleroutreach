@@ -56,41 +56,59 @@ function RegisterForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <label>Enter your name:
-                <input
+<form id="register">
+	<center>
+	<div>
+		<label>Full Name</label>
+    </div>
+	<div>
+				<input
                     type = "text"
                     name = "name"
                     value={inputs.name || ""}
                     onChange={handleChange}
                 />
-            </label>
-            <label>Enter Email:
+	</div>
+	<div>
+            <label>Email</label>
+	</div>
+	<div>
                 <input
                     type = "email"
                     name = "email"
                     value = {inputs.email || ""}
                     onChange={handleChange}
                 />
-            </label>
-            <label>Password:
+	</div>
+	<div>
+            <label>Password</label>
+	</div>
+	<div>
                 <input
                     type = "password"
                     name = "password"
                     value = {inputs.password || ""}
                     onChange={handleChange}
                 />
-            </label>
-            <label>Confirm Password:
+
+	</div>
+	<div>
+            <label>Confirm Password</label>
+	</div>
+	<div>
                 <input
                     type="password"
                     name = "confirm_pass"
                     value = {inputs.confirm_pass || ""}
                     onChange={handleChange}
                 />
-            </label>
-            <input type = "submit"/>
-        </form>
+
+        <div>
+			<input type = "submit"/>
+		</div>
+	</div>
+	</center>
+</form>
     )
 }
 const Register = () => {
