@@ -13,6 +13,7 @@ const Layout = () => {
                     <ul>
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/dashboard">Services</Link></li>
+                        <li><Link to="/register">Register Now</Link></li>
                     </ul>
                 </nav>
             </header>
