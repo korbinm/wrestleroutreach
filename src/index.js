@@ -5,6 +5,7 @@ import Layout from "./webpages/Layout.js";
 import Home from "./webpages/home.js";
 import Dashboard from "./webpages/Dashboard";
 import Register from "./webpages/Register.js";
+import Login from "./webpages/Login.js"
 //import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -17,6 +18,7 @@ export default function App(){
                     <Route index element = {<Home />} />
                     <Route path = "dashboard" element = {<Dashboard />} />
                     <Route path = "register" element = {<Register />}/>
+                    <Route path = "login" element = {<Login />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

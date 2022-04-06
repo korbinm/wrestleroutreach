@@ -1,8 +1,11 @@
 import React from "react";
+import { useState } from "react/cjs/react.production.min";
 import '../App.css';
 
-const Dashboard = () => {
-    return(
+function Dashboard() {
+
+
+  return(
         <div id="services">
             <div id="info">
                 <h3>As a Member</h3>
