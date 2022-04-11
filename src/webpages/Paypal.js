@@ -2,7 +2,7 @@ import React from "react";
 import '../App.css';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 function PaypalForm() {
-
+    // This is previous code from HTML file, Link to a React PayPal API at bottom
     // clientID needed as well as package installment
     //<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
     //     function initPayPalButton() {
@@ -43,6 +43,8 @@ function PaypalForm() {
     //     }).render('#paypal-button-container');
     // }
     //     initPayPalButton();
+
+    //https://www.npmjs.com/package/@paypal/react-paypal-js
     return(
         <PayPalScriptProvider options = {{"client-id": "test"}}>
             <PayPalButtons style = {{layout: "horizontal"}} />
