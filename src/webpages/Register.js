@@ -1,10 +1,10 @@
 import React from 'react';
 import {useState } from 'react';
 import ReactDOM from 'react-dom';
-import {createCustomer} from "../config/db";
+import {createCustomer} from "../api";
 
 //Form for registering
-function RegisterForm(){
+function RegisterForm() {
     const [inputs, setInputs] = useState({
         name: "",
         email:"",

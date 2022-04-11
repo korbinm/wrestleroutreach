@@ -1,9 +1,9 @@
 import React from 'react';
 import {useState } from 'react';
 import ReactDOM from 'react-dom';
-import {createCustomer} from "../config/db"; //probably need some sort of function like {getCustomer} or something like that
+import {createCustomer} from "../api"; //probably need some sort of function like {getCustomer} or something like that
 
-function LoginForm(){
+function LoginForm() {
     const [inputs, setInputs] = useState({
         email:"",
         password:"",

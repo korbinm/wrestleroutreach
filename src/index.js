@@ -6,7 +6,7 @@ import Home from "./webpages/home.js";
 import Dashboard from "./webpages/Dashboard";
 import Register from "./webpages/Register.js";
 import Login from "./webpages/Login.js"
-import Paypal from "./webpages/paypal.js"
+import Paypal from "./webpages/Paypal.js"
 //import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -21,7 +21,7 @@ export default function App(){
                     <Route path = "register" element = {<Register />}/>
                     <Route path = "login" element = {<Login />}/>
                     {/*currently not working*/}
-                    <Route path = "Paypal" element = {<Payapal />}/>
+                    <Route path = "Paypal" element = {<Paypal />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

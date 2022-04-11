@@ -52,9 +52,9 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "react-native": "react-native-web"
+            "react-native$": "react-native-web"
         },
-        extensions: [".web.js",".js",".jsx",".ts",".tsx"]
+        extensions: [".web.js",".js",".jsx",".ts",".tsx",".mjs"]
     },
 };
 // module.exports = {
@@ -65,12 +65,10 @@ module.exports = {
 //         publicPath: '/src/'
 //     },
 //     resolve: {
+//
 //         extensions: [".mjs", ".js"],
 //         fallback: {
 //             "path": require.resolve("path-browserify")
 //         }
-//     },
-//     plugins: [
-//         new Dotenv()
-//     ]
+//     }
 // }
