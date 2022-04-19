@@ -1,4 +1,6 @@
 import React from "react";
+import ReactDOM from 'react-dom';
+import Ap from '../index.js';
 import {useEffect} from "react"
 import '../App.css';
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
@@ -53,7 +55,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                 onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                         //once the order goes through this redirects
-                        
+                        ReactDOM.render(<Ap />, document.getElementById("root"));
                     });
                 }}
             />
