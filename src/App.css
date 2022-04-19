@@ -135,7 +135,7 @@ header .highlight, header .current a {
 }
 
 /*CSS for registration page*/
-#register{
+#register, #login{
   border: 1px solid #FF6A3D;
   width: 40%;
   padding: 20px;
@@ -150,7 +150,7 @@ header .highlight, header .current a {
   padding-right: 20px;
 }
 
-#register input[type=text], input[type=password]{
+#register input[type=text], input[type=email], input[type=password]{
   margin-left: 8px;
   font-size: 20px;
   width: 90%;

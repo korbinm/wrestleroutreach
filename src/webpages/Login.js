@@ -40,7 +40,7 @@ function LoginForm() {
     }
 
     return(
-<form id="Login">
+<form id="login">
 	<center>
 	<div>
             <label>Email</label>
