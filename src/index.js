@@ -10,6 +10,7 @@ import Paypal from "./webpages/Paypal.js"
 //import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ErrorPage from "./webpages/ErrorPage";
 
 function App(){
     return(
@@ -20,8 +21,9 @@ function App(){
                     <Route path = "dashboard" element = {<Dashboard />} />
                     <Route path = "register" element = {<Register />}/>
                     <Route path = "login" element = {<Login />}/>
-                    {/*currently not working*/}
                     <Route path = "Paypal" element = {<Paypal />}/>
+
+                    <Route path="*" element ={<ErrorPage/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

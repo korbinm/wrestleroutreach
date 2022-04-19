@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useRef, useEffect, useState} from 'react';
 import App from '../index.js'
 import {createCustomer} from "../api";
@@ -10,12 +10,13 @@ import Home from "./home";
 const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
+    //hook for getting back to homepage after success
+    const navigate = useNavigate();
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
-
     // Supposed to set focus on first box
     // useEffect(() => {
     //     userRef.current.focus;
@@ -27,7 +28,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         //Authentication stored here
-        setSuccess(true);
+        navigate("/"); //Routes back to Homepage
     }
     // const handleChange = (event) => {
     //     const name = event.target.name;

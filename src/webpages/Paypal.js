@@ -4,7 +4,7 @@ import Ap from '../index.js';
 import {useEffect} from "react"
 import '../App.css';
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-
+import {useNavigate} from "react-router-dom"
 // Value of the purchase
 const amount = "20";
 const currency = "USD";
@@ -16,7 +16,8 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-
+    //used to navigate back to home page
+    const navigate = useNavigate();
     useEffect(() => {
         dispatch({
             type: "resetOptions",
@@ -55,7 +56,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                 onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                         //once the order goes through this redirects
-                        ReactDOM.render(<Ap />, document.getElementById("root"));
+                        navigate("/");
                     });
                 }}
             />
