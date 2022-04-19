@@ -3,9 +3,7 @@ import { useState } from "react/cjs/react.production.min";
 import '../App.css';
 
 function Dashboard() {
-
-
-  return(
+    return(
         <div id="services">
             <div id="info">
                 <h3>As a Member</h3>
@@ -20,5 +18,5 @@ function Dashboard() {
             </div>
         </div>
     )
-};
+}
 export default Dashboard;

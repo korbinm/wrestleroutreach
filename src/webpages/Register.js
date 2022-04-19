@@ -9,7 +9,7 @@ import Home from "./home";
 
 
 //Form for registering
-function RegisterForm() {
+const Register = () => {
     const [inputs, setInputs] = useState({
         name: "",
         email: "",
@@ -116,7 +116,4 @@ function RegisterForm() {
     )
 }
 
-const Register = () => {
-    return RegisterForm();
-}
 export default Register;
