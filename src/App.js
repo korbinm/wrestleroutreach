@@ -4,14 +4,14 @@ import ReactDOM from 'react-dom';
 import {Text} from 'react-native';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
-export default function App() {
+/* export default function App() {
     return (
         <PayPalScriptProvider options={{ "client-id": "test" }}>
             <PayPalButtons style={{ layout: "horizontal" }} />
         </PayPalScriptProvider>
     );
 }
-
+ */
 import replay from './images/replay.png';
 import arrow from './images/arrow.png';
 import play from './images/playbutton.png';
