@@ -1,58 +1,82 @@
 import React from "react";
+import {useEffect} from "react"
 import '../App.css';
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-function PaypalForm() {
+import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+
+// Value of the purchase
+const amount = "20";
+const currency = "USD";
+const style = {"layout":"vertical"};
+
     // This is previous code from HTML file, Link to a React PayPal API at bottom
     // clientID needed as well as package installment
-    //<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-    //     function initPayPalButton() {
-    //     paypal.Buttons({
-    //         style: {
-    //             shape: 'rect',
-    //             color: 'gold',
-    //             layout: 'vertical',
-    //             label: 'paypal',
-    //
-    //         },
-    //
-    //         createOrder: function(data, actions) {
-    //             return actions.order.create({
-    //                 purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
-    //             });
-    //         },
-    //
-    //         onApprove: function(data, actions) {
-    //             return actions.order.capture().then(function(orderData) {
-    //
-    //                 // Full available details
-    //                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-    //
-    //                 // Show a success message within this page, e.g.
-    //                 const element = document.getElementById('paypal-button-container');
-    //                 element.innerHTML = '';
-    //                 element.innerHTML = '<h3>Thank you for your payment!</h3>';
-    //
-    //                 // Or go to another URL:  actions.redirect('thank_you.html');
-    //
-    //             });
-    //         },
-    //
-    //         onError: function(err) {
-    //             console.log(err);
-    //         }
-    //     }).render('#paypal-button-container');
-    // }
-    //     initPayPalButton();
 
-    //https://www.npmjs.com/package/@paypal/react-paypal-js
-    return(
-        <PayPalScriptProvider options = {{"client-id": "test"}}>
-            <PayPalButtons style = {{layout: "horizontal"}} />
-        </PayPalScriptProvider>
+// Custom component to wrap the PayPalButtons and handle currency changes
+const ButtonWrapper = ({ currency, showSpinner }) => {
+    // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
+    // This is the main reason to wrap the PayPalButtons in a new component
+    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
 
-    )
+    useEffect(() => {
+        dispatch({
+            type: "resetOptions",
+            value: {
+                ...options,
+                currency: currency,
+            },
+        });
+    }, [currency, showSpinner]);
+
+
+    return (<>
+            { (showSpinner && isPending) && <div className="spinner" /> }
+            <PayPalButtons
+                style={style}
+                disabled={false}
+                forceReRender={[amount, currency, style]}
+                fundingSource={undefined}
+                createOrder={(data, actions) => {
+                    return actions.order
+                        .create({
+                            purchase_units: [
+                                {
+                                    amount: {
+                                        currency_code: currency,
+                                        value: amount,
+                                    },
+                                },
+                            ],
+                        })
+                        .then((orderId) => {
+                            // Your code here after create the order
+                            return orderId;
+                        });
+                }}
+                onApprove={function (data, actions) {
+                    return actions.order.capture().then(function () {
+                        // Your code here after capture the order
+                    });
+                }}
+            />
+        </>
+    );
 }
-const Paypal =()=>{
-    return PaypalForm();
+
+export default function App() {
+	return (
+		<div style={{ maxWidth: "750px", minHeight: "200px" }}>
+            <PayPalScriptProvider
+                options={{
+                    "client-id": "ASuKgJL3PiueyJniXJZ8rLi9oYFGFs3sGD4kBic9rgGwLDw_QXbN5Jx1RxdRR5InJsQ7U5fisN-WHBGC",
+                    components: "buttons",
+                    currency: "USD"
+                }}
+            >
+				<ButtonWrapper
+                    currency={currency}
+                    showSpinner={false}
+                />
+			</PayPalScriptProvider>
+		</div>
+	);
 }
-export default Paypal();
