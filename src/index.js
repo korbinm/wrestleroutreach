@@ -11,7 +11,7 @@ import Paypal from "./webpages/Paypal.js"
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-export default function App(){
+function App(){
     return(
         <BrowserRouter>
             <Routes>
@@ -27,6 +27,7 @@ export default function App(){
         </BrowserRouter>
     )
 }
+export default App;
 ReactDOM.render(<App />, document.getElementById("root"));
 
 // reportWebVitals();
