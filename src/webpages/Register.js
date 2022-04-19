@@ -2,9 +2,13 @@ import React from 'react';
 import {useState } from 'react';
 import ReactDOM from 'react-dom';
 import {createCustomer} from "../api";
+import App from "../index.js";
+import {Route, Redirect} from "react-router-dom"
+
 
 //Form for registering
 function RegisterForm() {
+    let isValidated = false;
     const [inputs, setInputs] = useState({
         name: "",
         email:"",
@@ -49,14 +53,17 @@ function RegisterForm() {
         }
         else{
             createCustomer(inputs).then(res =>{
+                isValidated = true;
                 console.log('user added');
+
             })
         }
+
 
     }
 
     return(
-<form id="register">
+<form id="register" onSubmit={handleSubmit} >
 	<div>
 		<label>Full Name</label>
     </div>
@@ -105,8 +112,10 @@ function RegisterForm() {
         <div>
 			<input
                 type = "submit"
-                onChange={handleSubmit}/>
-		</div>
+                value="Submit"
+            />
+
+        </div>
 	</div>
 </form>
     )
