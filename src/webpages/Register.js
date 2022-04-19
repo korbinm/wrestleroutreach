@@ -57,7 +57,6 @@ function RegisterForm() {
 
     return(
 <form id="register">
-	<center>
 	<div>
 		<label>Full Name</label>
     </div>
@@ -104,10 +103,11 @@ function RegisterForm() {
                 />
 
         <div>
-			<input type = "submit"/>
+			<input
+                type = "submit"
+                onChange={handleSubmit}/>
 		</div>
 	</div>
-	</center>
 </form>
     )
 }
