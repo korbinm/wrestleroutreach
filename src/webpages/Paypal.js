@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import Home from "./home.js";
 import Ap from '../index.js';
 import {useEffect} from "react"
 import '../App.css';
@@ -55,7 +56,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                 onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                         //once the order goes through this redirects
-                        ReactDOM.render(<Ap />, document.getElementById("root"));
+                        App.render('/home');
                     });
                 }}
             />
