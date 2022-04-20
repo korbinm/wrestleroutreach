@@ -1,6 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import {useRef, useEffect, useState} from 'react';
+import {userLogin} from "../api"
 import App from '../index.js'
 import {createCustomer} from "../api";
 import Layout from "./Layout";
@@ -27,7 +28,14 @@ const Login = () => {
     }, [user, pwd])
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //Authentication stored here
+        try {
+            userLogin(user, pwd).then(res => {
+
+                console.log(res);
+            });
+        } catch{
+            alert("Error logging in");
+        }
         navigate("/"); //Routes back to Homepage
     }
     // const handleChange = (event) => {
