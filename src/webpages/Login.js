@@ -28,15 +28,13 @@ const Login = () => {
     }, [user, pwd])
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            userLogin(user, pwd).then(res => {
 
-                console.log(res);
-            });
-        } catch{
-            alert("Error logging in");
-        }
-        navigate("/"); //Routes back to Homepage
+        const results = userLogin(user, pwd);
+        console.log(results);
+
+
+
+         //Routes back to Homepage
     }
     // const handleChange = (event) => {
     //     const name = event.target.name;

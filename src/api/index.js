@@ -21,8 +21,9 @@ export const userLogin = async(email, password) =>
             { password: password },
         )
     )
-        .then((ret) => console.log(ret))
-        .catch((err)=> console.error('Error: %s', err));
+        .then((ret) => console.log())
+        .catch((err)=> console.error('Error: %s', err))
+
 
 //export const getAllCustomers;
 
