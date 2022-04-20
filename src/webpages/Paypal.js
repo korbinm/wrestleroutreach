@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import Home from "./home.js";
 import Ap from '../index.js';
 import {useEffect} from "react"
 import '../App.css';
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+
 // Value of the purchase
 const amount = "20";
 const currency = "USD";
@@ -15,9 +17,10 @@ const style = {"layout":"vertical"};
 const ButtonWrapper = ({ currency, showSpinner }) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
+    
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-    //used to navigate back to home page
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // creates a navigate object to use once the payment has gone through
+
     useEffect(() => {
         dispatch({
             type: "resetOptions",
@@ -31,7 +34,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
 
     return (<>
             { (showSpinner && isPending) && <div className="spinner" /> }
-            <PayPalButtons
+            <PayPalButtons 
                 style={style}
                 disabled={false}
                 forceReRender={[amount, currency, style]}
@@ -56,7 +59,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                 onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                         //once the order goes through this redirects
-                        navigate("/");
+                        navigate('/');
                     });
                 }}
             />
@@ -66,7 +69,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
 
 export default function App() {
 	return (
-		<div style={{ maxWidth: "750px", minHeight: "200px" }}>
+		<div style={{ maxWidth: "750px", minHeight: "200px", } }>
             <PayPalScriptProvider
                 options={{
                     "client-id": "ASuKgJL3PiueyJniXJZ8rLi9oYFGFs3sGD4kBic9rgGwLDw_QXbN5Jx1RxdRR5InJsQ7U5fisN-WHBGC",//this is the SANDBOX client-id
