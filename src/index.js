@@ -8,6 +8,7 @@ import Register from "./webpages/Register.js";
 import Login from "./webpages/Login.js"
 import Paypal from "./webpages/Paypal.js"
 import ErrorPage from "./webpages/ErrorPage";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 function App(){
     return(
@@ -27,7 +28,15 @@ function App(){
     )
 }
 export default App;
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+    <Auth0Provider
+        domain="dev-ojdglpcy.us.auth0.com"
+        clientId="Vt30qgA0bgk50xoWqpM8KszPNFZkH9nJ"
+        redirectUri={window.location.origin}
+    >
+        <App />
+    </Auth0Provider>,
+    document.getElementById("root"));
 
 // reportWebVitals();
 // If you want to start measuring performance in your app, pass a function
