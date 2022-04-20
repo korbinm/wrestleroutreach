@@ -3,7 +3,6 @@ import arrow from '../images/arrow.png';
 import play from '../images/playbutton.png';
 import '../App.css';
 import React from "react";
-const {REACT_APP_DB_KEY} = process.env;
 
 const Home = () => {
     return (

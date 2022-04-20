@@ -21,7 +21,7 @@ export const userLogin = async(email, password) =>
             { password: password },
         )
     )
-        .then((ret) => console.log())
+        .then((ret) => console.log(ret))
         .catch((err)=> console.error('Error: %s', err))
 
 

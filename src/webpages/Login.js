@@ -2,10 +2,6 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import {useRef, useEffect, useState} from 'react';
 import {userLogin} from "../api"
-import App from '../index.js'
-import {createCustomer} from "../api";
-import Layout from "./Layout";
-import Home from "./home";
 //probably need some sort of function like {getCustomer} or something like that
 
 const Login = () => {

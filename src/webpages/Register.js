@@ -1,11 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
-import ReactDOM from 'react-dom';
 import {createCustomer} from "../api";
-import {BrowserRouter, Route, Switch} from "react-router-dom"
-import App from "../index";
-import Layout from "../webpages/Layout.js";
-import Home from "./home";
+
 
 
 //Form for registering

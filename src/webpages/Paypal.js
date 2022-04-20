@@ -1,7 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
-import Home from "./home.js";
-import Ap from '../index.js';
 import {useEffect} from "react"
 import '../App.css';
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";

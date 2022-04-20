@@ -7,9 +7,6 @@ import Dashboard from "./webpages/Dashboard";
 import Register from "./webpages/Register.js";
 import Login from "./webpages/Login.js"
 import Paypal from "./webpages/Paypal.js"
-//import './index.css';
-//import App from './App';
-import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./webpages/ErrorPage";
 
 function App(){
