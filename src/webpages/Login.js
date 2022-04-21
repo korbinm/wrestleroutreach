@@ -4,6 +4,20 @@ import {useNavigate} from "react-router-dom";
 import {useRef, useEffect, useState} from 'react';
 import {userLogin} from "../api"
 import LogoutButton from "./Logout";
+
+const Login = () => {
+    const {loginWithRedirect} = useAuth0();
+
+    return (
+        <>
+            <button onClick={() => loginWithRedirect()}>Log In</button>
+            <LogoutButton/>
+        </>
+    )
+};
+
+export default Login;
+
 //probably need some sort of function like {getCustomer} or something like that
 
 // const Login = () => {
@@ -68,16 +82,3 @@ import LogoutButton from "./Logout";
 //         </>
 //     )
 // };
-
-const Login = () => {
-    const {loginWithRedirect} = useAuth0();
-
-    return (
-        <>
-            <button onClick={() => loginWithRedirect()}>Log In</button>
-            <LogoutButton/>
-        </>
-    )
-};
-
-export default Login;
