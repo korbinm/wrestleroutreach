@@ -72,10 +72,8 @@ import LogoutButton from "./Logout";
 const Login = () => {
     const {loginWithRedirect} = useAuth0();
 
-
     return (
         <>
-
             <button onClick={() => loginWithRedirect()}>Log In</button>
             <LogoutButton/>
         </>

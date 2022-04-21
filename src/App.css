@@ -195,7 +195,7 @@ header .highlight, header .current a {
   height:300px;
 }
 
-.videos{
+#videos{
   width:60%;
   margin-left: auto;
   margin-right: auto;
@@ -203,21 +203,21 @@ header .highlight, header .current a {
   height: 630px;
   overflow-y: auto;
 }
-.videos table{
+#videos table{
   width:100%;
   padding:15px;
 }
-.videos iframe{
+#videos iframe{
   width:90%;
   height: 315px;
 }
-.videos #vid{
+#videos #vid{
   text-align:center;
 }
-.videos td{
+#videos td{
   width: 50%;
 }
-.videos th, td{
+#videos th, td{
   border-bottom: 1px solid #1A2238;
   padding-bottom: 15px;
 }
