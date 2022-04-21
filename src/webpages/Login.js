@@ -3,6 +3,7 @@ import {useAuth0} from "@auth0/auth0-react"
 import {useNavigate} from "react-router-dom";
 import {useRef, useEffect, useState} from 'react';
 import {userLogin} from "../api"
+import LogoutButton from "./Logout";
 //probably need some sort of function like {getCustomer} or something like that
 
 // const Login = () => {
@@ -69,14 +70,16 @@ import {userLogin} from "../api"
 // };
 
 const Login = () => {
-    const { loginWithRedirect } = useAuth0();
+    const {loginWithRedirect} = useAuth0();
 
 
-    return(
+    return (
+        <>
 
-        <button onClick={() => loginWithRedirect()}>Log In</button>
-
-)
+            <button onClick={() => loginWithRedirect()}>Log In</button>
+            <LogoutButton/>
+        </>
+    )
 };
 
 export default Login;
