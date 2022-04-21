@@ -1,17 +1,16 @@
 
 import {client, q} from '../config/db';
 //creates a customer field
-export const createCustomer = async(name, email, password) =>
+export const createCustomer = async(email, tkn) =>
     client.query(
         q.Create(
-            q.Collection('Users'),
+            q.Collection('accounts'),
             {data: {
-                    name,
                     email,
-                    password
+                    tkn,
                 } })
     )
-        .then((ret) => console.log(ret))
+
         .catch((err) => console.error('Error: %s', err));
 
 export const userLogin = async(email, password) =>
