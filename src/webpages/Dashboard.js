@@ -1,8 +1,10 @@
 import React from "react";
 import '../App.css';
 
+
 function Dashboard() {
     return(
+
         <div id="services">
             <div id="info">
                 <h3>As a Member</h3>

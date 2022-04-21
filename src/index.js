@@ -9,6 +9,7 @@ import Login from "./webpages/Login.js"
 import Paypal from "./webpages/Paypal.js"
 import ErrorPage from "./webpages/ErrorPage";
 import { Auth0Provider } from "@auth0/auth0-react";
+import LogoutButton from "./webpages/Logout";
 
 function App(){
     return(
@@ -20,6 +21,7 @@ function App(){
                     <Route path = "register" element = {<Register />}/>
                     <Route path = "login" element = {<Login />}/>
                     <Route path = "Paypal" element = {<Paypal />}/>
+                    <Route path = "Logout" element = {<LogoutButton/>}/>
 
                     <Route path="*" element ={<ErrorPage/>}/>
                 </Route>
@@ -27,11 +29,13 @@ function App(){
         </BrowserRouter>
     )
 }
+//process.env.REACT_APP_LOCAL___AUTH0_DOMAIN
 export default App;
 ReactDOM.render(
     <Auth0Provider
-        domain="dev-ojdglpcy.us.auth0.com"
-        clientId="Vt30qgA0bgk50xoWqpM8KszPNFZkH9nJ"
+        domain={process.env.REACT_APP_LOCAL___AUTH0_DOMAIN}
+        clientId={process.env.REACT_APP_LOCAL___AUTH0_CLIENTID}
+        audience={process.env.REACT_APP_LOCAL___AUTH0_AUDIENCE}
         redirectUri={window.location.origin}
     >
         <App />

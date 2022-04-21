@@ -71,7 +71,12 @@ import {userLogin} from "../api"
 const Login = () => {
     const { loginWithRedirect } = useAuth0();
 
-    return <button onClick={() => loginWithRedirect()}>Log In</button>;
+
+    return(
+
+        <button onClick={() => loginWithRedirect()}>Log In</button>
+
+)
 };
 
 export default Login;
