@@ -7,7 +7,6 @@ function Dashboard() {
     const token =  getAccessTokenSilently();
 
 
-
     useEffect(()=>{
 
         if (error) {

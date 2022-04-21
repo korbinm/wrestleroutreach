@@ -38,6 +38,9 @@ header li {
   display: inline;
   padding: 0 20px 0 20px;
 }
+header li:hover{
+  cursor: pointer;
+}
 
 header #branding {
   float: left;

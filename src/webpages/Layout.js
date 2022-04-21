@@ -3,8 +3,11 @@ import React, {useEffect} from "react";
 import '../App.css';
 import { useAuth0 } from '@auth0/auth0-react'
 
+
 const Layout = () => {
     const { user, getAccessTokenSilently, isAuthenticated, error } = useAuth0()
+    const {loginWithRedirect, logout} = useAuth0();
+
 
     if (isAuthenticated){
         return(
@@ -17,7 +20,7 @@ const Layout = () => {
                         <ul>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/dashboard">Dashboard</Link></li>
-                            <li><Link to="/login">Login</Link></li>
+                            <li onClick={()=>logout({returnTo: window.location.origin})}>LOGOUT</li>
                             <li><Link to="/Paypal">Paypal</Link></li>
                         </ul>
                     </nav>
@@ -35,7 +38,7 @@ const Layout = () => {
                     <nav>
                         <ul>
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/login">Login</Link></li>
+                            <li onClick ={()=> loginWithRedirect()}>LOGIN</li>
                         </ul>
                     </nav>
                 </header>
