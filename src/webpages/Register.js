@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
-import {createCustomer} from "../api";
+import {} from "../utils";
 
 
 
@@ -48,9 +48,7 @@ const Register = () => {
         if (!validate()) {
             alert(inputs.errors);
         } else {
-            createCustomer(inputs).then(res => {
-                console.log("User Created");
-            })
+
         }
     }
 

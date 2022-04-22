@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
 import '../App.css';
-import {useAuth0} from '@auth0/auth0-react'
+import {useAuth0, withAuthenticationRequired} from '@auth0/auth0-react'
 import {ContainsValue, CreateAccessProvider, CurrentToken, Lambda, Query, Role, Select, Var} from 'faunadb'
-import {createCustomer} from "../api";
+import { createQuestion, getAnswers} from "../utils";
 
-function Dashboard() {
+function  Dashboard() {
     const {user, getAccessTokenSilently, isAuthenticated, error,} = useAuth0()
 
 
@@ -36,7 +36,8 @@ function Dashboard() {
         if (error) {
             console.log(error)
         } else if (isAuthenticated) {
-            console.log("user: ", user)
+            console.log("user email:", user.email)
+            // console.log("user: ", getAnswers(user.email))
             console.log("Token: ", getAccessTokenSilently())
 
         }
