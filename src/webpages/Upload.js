@@ -11,7 +11,7 @@ import {
   Select,
   Var,
 } from "faunadb";
-import { createCustomer } from "../api";
+//import { createCustomer } from "../api";
 
 function App() {
   const inputRef = useRef(null);
