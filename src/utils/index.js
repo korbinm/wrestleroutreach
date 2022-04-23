@@ -18,13 +18,14 @@ export const userLogin = async (email, password) =>
 
 
 export const getAnswers = async (email) => {
-    console.log("this hits");
+    console.log("util/index hits");
     const {data} = await client.query(
         q.Map(
             q.Paginate(q.Match(q.Index('answers_by_email'), email)),
             q.Lambda('ref', q.Get(q.Var('ref')))
         )
     );
+    console.log("util/index database", data)
     return data;
 };
 
