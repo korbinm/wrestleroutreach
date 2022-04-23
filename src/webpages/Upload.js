@@ -1,17 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../App.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  ContainsValue,
-  CreateAccessProvider,
-  CurrentToken,
-  Lambda,
-  Query,
-  Role,
-  Select,
-  Var,
-} from "faunadb";
-//import { createCustomer } from "../api";
 
 function App() {
   const inputRef = useRef(null);
