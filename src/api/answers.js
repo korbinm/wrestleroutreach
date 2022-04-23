@@ -1,7 +1,7 @@
 import {getAnswers} from "../utils/index";
-import {} from "@auth0/auth0-react";
+import {withAuth0} from "@auth0/auth0-react";
 
-export default async function handler(email, req, res) {
+export default async function handler(req, res) {
     console.log("This hits");
     // console.log("answers.js:", getUserEmail())
     console.log("req.method", req.method)

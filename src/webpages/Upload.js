@@ -16,7 +16,7 @@ function App() {
         <h1>Chat</h1>
       </div>
       <div>
-        <textarea readonly value={data}></textarea>
+        <textarea readOnly value={data}></textarea>
       </div>
       <textarea
         placeholder="type here"

@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
 import '../App.css';
-import {useAuth0, withAuthenticationRequired} from '@auth0/auth0-react'
-import {ContainsValue, CreateAccessProvider, CurrentToken, Lambda, parseJSON, Query, Role, Select, Var} from 'faunadb'
-import useSWR from 'swr';
-import handler from "../api/answers"
+import {useAuth0} from '@auth0/auth0-react'
+import {ContainsValue, CreateAccessProvider, Lambda, Query, Role, Select, Var} from 'faunadb'
 import {getAnswers} from "../utils";
+import useSWR from 'swr'
 
 
 function  Dashboard() {
-    const {getAccessTokenSilently, isAuthenticated, error, isLoading} = useAuth0()
+    const {isLoading} = useAuth0()
     const {user} = useAuth0();
     // const answers = fetch("../api/answers.js");
     // let email = parseJSON(user.email);
@@ -34,29 +33,27 @@ function  Dashboard() {
             ]
         }
     )
-
-    // const {data: answers} = useSWR('../api/answers.js',handler(JSON.stringify(user.email)));
-    let answers;
-    if (isLoading){
-        return <h1>loading</h1>
+    let email;
+    if (isLoading) {
+        console.log("test")
+        return <h1>Loading</h1>
     }else {
-        answers = getAnswers(user.email);
-        console.log("answers:",answers);
+        email = user.email;
     }
-    useEffect(() => {
+    const [answers, setAnswers] = useState([]);
+    const[test, setTest] =useState([])
 
-        if (error) {
-            console.log(error)
-        } else if (isAuthenticated) {
-            console.log("user email:");
-            console.log("debugger", typeof user.name)
-            console.log("database", answers);
-            console.log("Token: ", getAccessTokenSilently())
-        }
-    })
+    useEffect(() =>{
+        getAnswers(email).then(answers => setAnswers(answers))
+    },[test])
+    // const answers = getAnswers(email).then((result) => {return result});
+    console.log("Answers in effect:", answers);
+    const{value} = answers;
+    console.log('test', value)
+
     return (
         <div>
-            {answers[0]}
+            {}
         </div>
         //<button onClick={createQuestion(email,"test url", "test question")}>Test</button>
 
