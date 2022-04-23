@@ -1,19 +1,19 @@
 import React from "react";
-import {useAuth0} from "@auth0/auth0-react"
-import {useNavigate} from "react-router-dom";
-import {useRef, useEffect, useState} from 'react';
-import {userLogin} from "../utils"
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
+import { useRef, useEffect, useState } from "react";
+import { userLogin } from "../utils";
 import LogoutButton from "./Logout";
 
 const Login = () => {
-    const {loginWithRedirect} = useAuth0();
+  const { loginWithRedirect } = useAuth0();
 
-    return (
-        <>
-            <button onClick={() => loginWithRedirect()}>Log In</button>
-            <LogoutButton/>
-        </>
-    )
+  return (
+    <>
+      <button onClick={() => loginWithRedirect()}>Log In</button>
+      <LogoutButton />
+    </>
+  );
 };
 
 export default Login;
