@@ -16,11 +16,7 @@ function App() {
         <h1>Chat</h1>
       </div>
       <div>
-<<<<<<< HEAD
         <textarea id="chat" rows="15" readonly value={data}></textarea>
-=======
-        <textarea readOnly value={data}></textarea>
->>>>>>> dc60b14cc7ab4217cefea016699ca4b5d1d8b48f
       </div>
       <textarea
         id="uploadChat"
