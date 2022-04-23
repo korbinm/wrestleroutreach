@@ -30,7 +30,7 @@ function App() {
     </BrowserRouter>
   );
 }
-//process.env.REACT_APP_LOCAL___AUTH0_DOMAIN
+
 export default App;
 ReactDOM.render(
   <Auth0Provider

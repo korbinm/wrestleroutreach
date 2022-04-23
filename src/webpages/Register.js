@@ -1,4 +1,6 @@
-//not needed. I think we should create an archive folder in this project for unneeded code
+import React from "react";
+import { useState } from "react";
+import {} from "../utils";
 
 import React from "react";
 import { useState } from "react";
@@ -28,10 +30,13 @@ const Register = () => {
       inputs.errors = "Please enter an email.";
       return false;
     }
-    if (!inputs.password) {
-      inputs.errors = "Please enter a password.";
-      return false;
-    }
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      if (!validate()) {
+        alert(inputs.errors);
+      } else {
+      }
+    };
     //insert valid password requirement check
     if (!inputs.confirm_pass) {
       inputs.errors = "Please enter a confirmation password";
