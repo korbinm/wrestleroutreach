@@ -1,7 +1,7 @@
 import faunadb from 'faunadb';
 
 const client = new faunadb.Client({
-    secret: 'fnAEkkv_GHACULkaqhgf8I3MzB7hb2pnIXrpUH8J'//don't lose this signs into the fauna database
+    secret: 'fnAEk1IHIlACUAwYPwOHAQL5ZNqunA9US6NftCZJ'//don't lose this signs into the fauna database
 });
 
 const q = faunadb.query;

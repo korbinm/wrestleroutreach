@@ -1,13 +1,16 @@
 import React, {useEffect} from "react";
 import '../App.css';
 import {useAuth0, withAuthenticationRequired} from '@auth0/auth0-react'
-import {ContainsValue, CreateAccessProvider, CurrentToken, Lambda, Query, Role, Select, Var} from 'faunadb'
-import { createQuestion, getAnswers} from "../utils";
+import {ContainsValue, CreateAccessProvider, CurrentToken, Lambda, parseJSON, Query, Role, Select, Var} from 'faunadb'
+import {createQuestion, getAnswers} from "../utils/index.js";
+import useSWR from 'swr';
+import handler from "../api/answers"
 
 function  Dashboard() {
-    const {user, getAccessTokenSilently, isAuthenticated, error,} = useAuth0()
-
-
+    const {getAccessTokenSilently, isAuthenticated, error} = useAuth0()
+    const {user} = useAuth0()
+    // const answers = fetch("../api/answers.js");
+    // let email = parseJSON(user.email);
     CreateAccessProvider(
         {
             "name": "Auth0",
@@ -29,21 +32,24 @@ function  Dashboard() {
             ]
         }
     )
-
-
+    //const {data: answers} = useSWR('../api/answers.js',handler);
 
     useEffect(() => {
         if (error) {
             console.log(error)
         } else if (isAuthenticated) {
             console.log("user email:", user.email)
-            // console.log("user: ", getAnswers(user.email))
+            // console.log("database", answers);
             console.log("Token: ", getAccessTokenSilently())
-
         }
     })
-    return <h1>Hi</h1>
+    return (
+        <h1>hi</h1>
+        //<button onClick={createQuestion(email,"test url", "test question")}>Test</button>
+
+    )
 
 }
 
 export default Dashboard;
+
