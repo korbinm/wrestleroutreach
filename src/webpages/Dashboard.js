@@ -12,10 +12,11 @@ import {
   Var,
 } from "faunadb";
 import { createQuestion, getAnswers } from "../utils";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const { user, getAccessTokenSilently, isAuthenticated, error } = useAuth0();
-
+  const navigate = useNavigate();
   CreateAccessProvider({
     name: "Auth0",
     issuer: "https://<auth0 domain>/",
@@ -89,7 +90,17 @@ function Dashboard() {
       console.log("Token: ", getAccessTokenSilently());
     }
   });
-  return <h1>Hi</h1>;
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <div>
+        <h2>Pay for a new question here:</h2>{" "}
+        {/* the idea here is that you will pay through paypal and upon */}
+        <button onClick={() => navigate("/Paypal")}>Pay Here</button>
+        {/* confirmation of a payment you will then be directed to ask a question*/}
+      </div>
+    </div>
+  );
 }
 
 export default Dashboard;

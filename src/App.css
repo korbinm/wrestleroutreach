@@ -225,3 +225,11 @@ header .highlight, header .current a {
   border-bottom: 1px solid #1A2238;
   padding-bottom: 15px;
 }
+
+#chat {
+  width: 95%;
+}
+
+#uploadChat {
+  width: 30%;
+}

@@ -16,12 +16,12 @@ function App() {
         <h1>Chat</h1>
       </div>
       <div>
-        <textarea readonly value={data}></textarea>
+        <textarea id="chat" rows="15" readonly value={data}></textarea>
       </div>
       <textarea
+        id="uploadChat"
         placeholder="type here"
         rows="5"
-        cols="30"
         ref={inputRef}
       ></textarea>
       <div>
