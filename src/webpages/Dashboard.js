@@ -12,10 +12,12 @@ import {
 } from "faunadb";
 import { getAnswers } from "../utils";
 import useSWR from "swr";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const { isLoading } = useAuth0();
   const { user } = useAuth0();
+  const navigate = useNavigate();
   // const answers = fetch("../api/answers.js");
   // let email = parseJSON(user.email);
 
@@ -74,7 +76,14 @@ function Dashboard() {
         <h1>Dashboard</h1>
       </div>
       <div>
-        <button>Pay Now</button>
+        <p>Pay 20$ now to ask a question to one of our expert coaches!</p>
+        <button
+          onClick={() => {
+            navigate("/Paypal");
+          }}
+        >
+          Pay Now
+        </button>
       </div>
     </div>
     //<button onClick={createQuestion(email,"test url", "test question")}>Test</button>
