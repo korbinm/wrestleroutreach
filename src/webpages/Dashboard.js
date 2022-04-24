@@ -69,7 +69,14 @@ function Dashboard() {
   console.log("test", value);
 
   return (
-    <div>{}</div>
+    <div>
+      <div>
+        <h1>Dashboard</h1>
+      </div>
+      <div>
+        <button>Pay Now</button>
+      </div>
+    </div>
     //<button onClick={createQuestion(email,"test url", "test question")}>Test</button>
   );
 }
