@@ -1,10 +1,10 @@
 import { Outlet, Link } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
 import "../App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Layout = () => {
-  const { user, getAccessTokenSilently, isAuthenticated, error } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const { loginWithRedirect, logout } = useAuth0();
 
   if (isAuthenticated) {

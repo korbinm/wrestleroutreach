@@ -16,7 +16,7 @@ const Home = () => {
       </section>
       <section id="boxes">
         <div className="box">
-          <img src={arrow} alt={arrow} />
+          <img src={arrow} alt={"arrow"} />
           <h3>Send Videos</h3>
           <p>
             Send us a wrestling video to get our help on any wrestling positions
@@ -32,7 +32,7 @@ const Home = () => {
           </p>
         </div>
         <div className="box">
-          <img src={replay} alt={"this is a replay image"} />
+          <img src={replay} alt={"replay"} />
           <h3>Replay Videos</h3>
           <p>
             Never forget what we have taught with being able to rewatch any
