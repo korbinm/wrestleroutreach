@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,26 @@ function Form() {
   };
 
   //this function will upload the video to the google drive when the user clicks the "upload" button
-  const uploadVideo = () => {};
+  const uploadVideo = () => {
+    openPicker({
+      clientId:
+        "189916503967-cagikvagupmt763glh6fjaipgqr408bk.apps.googleusercontent.com",
+      developerKey: "AIzaSyDGaXxHw5K6YXpOXzVzEHC3qAA_CdzUss0",
+      viewId: "DOCS",
+      token:
+        "ya29.A0ARrdaM_3AH_7jW4QkZTR_yQQ2J5QbT0ytRSIeLYppa04OxHMyMTaRk0KuoXXREPrpMyf5L2RFqXVWSWXliBPjomuu5WNaDaLEGHp9BW9z1_8vpWvBq758PJm0-pJra7Z1dXPd072_bqKNxZHqMmya3zQtPM7",
+      showUploadView: true,
+      showUploadFolders: true,
+      supportDrives: true,
+      multiselect: false,
+    });
+  };
+
+  useEffect(() => {
+    if (data) {
+      data.docs.map((i) => console.log(i));
+    }
+  }, [data]);
 
   return (
     <div>
@@ -34,7 +53,13 @@ function Form() {
       </div>
       <div>
         <p>Upload Video Here</p>
-        <button onClick={uploadVideo}>Upload</button>
+        <button
+          onClick={() => {
+            uploadVideo();
+          }}
+        >
+          Upload
+        </button>
         {/*line here which sends uploaded video to google drive acct and then gets the link to the video*/}
       </div>
       <textarea
