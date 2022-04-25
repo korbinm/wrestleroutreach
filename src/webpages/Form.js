@@ -30,13 +30,13 @@ function Form() {
       clientId:
         "189916503967-cagikvagupmt763glh6fjaipgqr408bk.apps.googleusercontent.com",
       developerKey: "AIzaSyDGaXxHw5K6YXpOXzVzEHC3qAA_CdzUss0",
-      viewId: "DOCS",
+      viewId: "DRAWINGS",
       token:
-        "ya29.A0ARrdaM_3AH_7jW4QkZTR_yQQ2J5QbT0ytRSIeLYppa04OxHMyMTaRk0KuoXXREPrpMyf5L2RFqXVWSWXliBPjomuu5WNaDaLEGHp9BW9z1_8vpWvBq758PJm0-pJra7Z1dXPd072_bqKNxZHqMmya3zQtPM7",
+        "ya29.A0ARrdaM98yp2a1lNQ69vCGf8-YlAW_chJrXCQzrLuIyiiUuszjG5K_KIcv8WcV0iwKBjw73CpJnyH-TIeq5PEwFEklkNPerxHiIdP-6qnfXJ8WUdAkbEOeaIwqf4LAPigJjiuTuipLzJ5tBgorsyYiZs1g8a2",
       showUploadView: true,
-      showUploadFolders: true,
-      supportDrives: true,
-      multiselect: false,
+      //showUploadFolders: true,
+      //supportDrives: true,
+      //multiselect: false,
     });
   };
 
@@ -52,7 +52,27 @@ function Form() {
         <h1>What's Your Question?</h1>
       </div>
       <div>
-        <p>Upload Video Here</p>
+        <h4>Steps to uploading a video:</h4>
+      </div>
+      <div>
+        <p>
+          1. Click upload button, navigate to the upload tab (ignoring the
+          drawing tab) then select a video from your files.
+        </p>
+      </div>
+      <div>
+        <p>
+          2. Once you have uploaded your video type in your question and then
+          press submit.
+        </p>
+      </div>
+      <div>
+        <p>
+          <strong>Important!</strong> If you have not been redirected from this
+          page your video has not been submitted for review!
+        </p>
+      </div>
+      <div>
         <button
           onClick={() => {
             uploadVideo();
@@ -62,13 +82,17 @@ function Form() {
         </button>
         {/*line here which sends uploaded video to google drive acct and then gets the link to the video*/}
       </div>
-      <textarea
-        id="uploadChat"
-        placeholder="What is your question?"
-        rows="5"
-        ref={refQuestion}
-      ></textarea>
       <div>
+        <br></br>
+        <textarea
+          id="uploadChat"
+          placeholder="What is your question?"
+          rows="5"
+          ref={refQuestion}
+        ></textarea>
+      </div>
+      <div>
+        <br></br>
         <button onClick={confirm}>Send</button>
       </div>
     </div>
