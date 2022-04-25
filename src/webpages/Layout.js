@@ -33,6 +33,9 @@ const Layout = () => {
               <li>
                 <Link to="/Form">Question</Link>
               </li>
+              <li>
+                <Link to="/Player">Player</Link>
+              </li>
               <li onClick={() => logout({ returnTo: window.location.origin })}>
                 LOGOUT
               </li>
