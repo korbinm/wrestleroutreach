@@ -60,10 +60,19 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
         onApprove={function (data, actions) {
           return actions.order.capture().then(function () {
             //once the order goes through this redirects
-            navigate("/");
+            navigate("/Form");
           });
         }}
       />
+      <div>
+        <button
+          onClick={() => {
+            navigate("/Form");
+          }}
+        >
+          Sim Pay
+        </button>
+      </div>
     </>
   );
 };

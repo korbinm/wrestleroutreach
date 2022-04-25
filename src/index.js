@@ -10,6 +10,8 @@ import ErrorPage from "./webpages/ErrorPage";
 import { Auth0Provider } from "@auth0/auth0-react";
 import LogoutButton from "./webpages/Logout";
 import Upload from "./webpages/Upload.js";
+import Form from "./webpages/Form.js";
+import Confirmation from "./webpages/Confirmation.js";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="Paypal" element={<Paypal />} />
           <Route path="Logout" element={<LogoutButton />} />
           <Route path="Upload" element={<Upload />} />
+          <Route path="Form" element={<Form />} />
+          <Route path="Confirmation" element={<Confirmation />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

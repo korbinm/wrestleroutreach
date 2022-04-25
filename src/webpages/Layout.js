@@ -30,6 +30,9 @@ const Layout = () => {
               <li>
                 <Link to="/Paypal">Paypal</Link>
               </li>
+              <li>
+                <Link to="/Form">Question</Link>
+              </li>
               <li onClick={() => logout({ returnTo: window.location.origin })}>
                 LOGOUT
               </li>
