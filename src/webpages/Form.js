@@ -3,11 +3,12 @@ import "../App.css";
 import { useNavigate } from "react-router-dom";
 import { storage } from "../firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import Player from "./Player";
 
 function Form() {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
-  const [videoURL, setUrl] = useState("");
+  const [videoURL, setUrl] = useState();
   const refQuestion = useRef(null);
   var question = ""; //this contains the question that the user has
 
@@ -59,6 +60,7 @@ function Form() {
           <br></br>
           <button type="submit">Upload</button>
         </form>
+        {Player(videoURL)}
         {/*line here which sends uploaded video to google drive acct and then gets the link to the video*/}
       </div>
     </div>

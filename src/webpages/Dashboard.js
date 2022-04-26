@@ -13,6 +13,7 @@ import {
 import { getAnswers } from "../utils";
 import useSWR from "swr";
 import { useNavigate } from "react-router-dom";
+import Display from "./displayAnswers";
 
 function Dashboard() {
   const { isLoading } = useAuth0();
@@ -53,22 +54,34 @@ function Dashboard() {
     ],
   });
   let email;
+  const [answers, setAnswers] = useState([]);
   if (isLoading) {
     console.log("test");
+    setAnswers([]);
     return <h1>Loading</h1>;
   } else {
     email = user.email;
   }
-  const [answers, setAnswers] = useState([]);
+
   const [test, setTest] = useState([]);
 
   useEffect(() => {
-    getAnswers(email).then((answers) => setAnswers(answers));
+    async function fetchAnswers(){
+      let holder = await getAnswers(email)
+      setAnswers(holder)
+    }
+    fetchAnswers();
   }, [test]);
-  // const answers = getAnswers(email).then((result) => {return result});
+
+  //simple to print out
+// useEffect(()=>{
+//   setAnswers([1,2,3]);
+// })
+
+
+
   console.log("Answers in effect:", answers);
-  const { value } = answers;
-  console.log("test", value);
+  console.log("Destructure?", answers.data);
 
   return (
     <div>
@@ -82,6 +95,7 @@ function Dashboard() {
           Pay Now
         </button>
       </div>
+      {/*{answers !== [] ? Display(answers) : <h1>No videos</h1>}*/}
     </div>
     //<button onClick={createQuestion(email,"test url", "test question")}>Test</button>
   );

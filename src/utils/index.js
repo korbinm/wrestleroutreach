@@ -39,7 +39,12 @@ export const getAnswers = async (email) => {
     )
   );
   console.log("util/index database", data);
-  return data;
+  const answers = data.map(answer =>{
+    answer.id = answer.ref.id;
+    delete answer.ref;
+    return answer;
+  })
+  return answers;
 };
 
 export const createQuestion = async (customerEmail, customerVideo, notes, answered) => {
