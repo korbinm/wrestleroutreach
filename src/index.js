@@ -13,7 +13,6 @@ import Upload from "./webpages/Upload.js";
 import Form from "./webpages/Form.js";
 import Confirmation from "./webpages/Confirmation.js";
 import Player from "./webpages/Player.js";
-
 function App() {
   return (
     <BrowserRouter>

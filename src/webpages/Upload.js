@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Player from "./Player.js";
 import { storage } from "../firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const inputRef = useRef(null);
@@ -11,6 +12,7 @@ function App() {
   const { user } = useAuth0(); //this takes the username from auth0
   const [progress, setProgress] = useState(0);
   const [url, setURL] = useState("");
+  const navigate = useNavigate();
 
   const formHandler = (e) => {
     e.preventDefault();
@@ -18,8 +20,6 @@ function App() {
     uploadFiles(file);
   };
 
-  //Sort Through this block
-  //**************************************************************************************************** */
   const uploadFiles = (file) => {
     if (!file) return;
     const storageRef = ref(storage, file.name);
@@ -55,8 +55,8 @@ function App() {
         )}
       </div>
 
-      <div>
-        <div id="sidebyside">
+      <div class="uploadcontainer">
+        <div class="video">
           <h2>Answer</h2>
           <div>
             <form onSubmit={formHandler}>
@@ -67,15 +67,29 @@ function App() {
           </div>
           {Player(url)}
         </div>
-        <div id="sidebyside">
+        <div class="chat">
           <div>
-            <textarea rows="15" readonly value={data}></textarea>
+            <textarea rows="15" id="fillarea" readonly value={data}></textarea>
           </div>
-          <textarea placeholder="type here" rows="5" ref={inputRef}></textarea>
+          <textarea
+            placeholder="type here"
+            id="fillarea"
+            rows="5"
+            ref={inputRef}
+          ></textarea>
+          <div>
+            <button onClick={onClick}>Chat</button>
+          </div>
         </div>
-      </div>
-      <div>
-        <button onClick={onClick}>Send</button>
+        <div>
+          <button
+            onClick={() => {
+              navigate("/Dashboard");
+            }}
+          >
+            Submit Video Answer
+          </button>
+        </div>
       </div>
     </div>
   );

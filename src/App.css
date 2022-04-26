@@ -237,3 +237,17 @@ header .highlight, header .current a {
   border-bottom: 1px solid #1A2238;
   padding-bottom: 15px;
 }
+
+/* This will format the Upload.js file */
+.uploadcontainer {  display: grid;
+  grid-template-columns: .5fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 20px;
+  grid-auto-flow: row;
+}
+
+.video { grid-area: 1 / 1 / 2 / 3; }
+
+.chat { grid-area: 1 / 2 / 2 / 3; }
+
+#fillarea {width: 90%}
