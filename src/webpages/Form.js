@@ -1,18 +1,21 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
 import { storage } from "../firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import Player from "./Player";
+import Player from "./Player.js";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Form() {
   const [progress, setProgress] = useState(0);
+  const [url, setURL] = useState("");
   const navigate = useNavigate();
-  const [videoURL, setUrl] = useState();
   const refQuestion = useRef(null);
-  var question = ""; //this contains the question that the user has
+  const [question, getQuestion] = useState("");
+  const { user } = useAuth0(); //this takes the username from auth0
 
   const formHandler = (e) => {
+    getQuestion(user.name + ": " + refQuestion.current.value);
     e.preventDefault();
     const file = e.target[0].files[0];
     uploadFiles(file);
@@ -33,14 +36,10 @@ function Form() {
       },
       (err) => console.log(err),
       () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => setUrl(url));
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => setURL(url));
       }
     );
-
   };
-  useEffect(()=>{
-    console.log("Video URL:", videoURL)
-  }, [videoURL])
   return (
     <div>
       <div>
@@ -48,7 +47,7 @@ function Form() {
       </div>
       <div className="App">
         <form onSubmit={formHandler}>
-          <input type="file" className="input" />
+          <input type="file" className="input" accept="video/*" />
           <h3>Uploaded {progress} %</h3>
           <br></br>
           <textarea
@@ -58,12 +57,30 @@ function Form() {
             ref={refQuestion}
           ></textarea>
           <br></br>
-          <button type="submit">Upload</button>
+          <button type="submit">Upload Video</button>
         </form>
-        {Player(videoURL)}
-        {/*line here which sends uploaded video to google drive acct and then gets the link to the video*/}
+        <div>
+          <div>
+            <p>
+              Preview. Do not submit to coach until you can watch the video
+              under preview
+            </p>
+          </div>
+          <div>{Player(url)}</div>
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              console.log(question); //this should be uploaded to the database instead of console.logged
+              navigate("/Confirmation");
+            }}
+          >
+            Submit to a Coach
+          </button>
+        </div>
       </div>
     </div>
   );
 }
+
 export default Form;

@@ -25,16 +25,10 @@ const Layout = () => {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
               <li>
-                <Link to="/upload">Upload</Link>
-              </li>
-              <li>
-                <Link to="/Paypal">Paypal</Link>
+                <Link to="/upload">Answer</Link>
               </li>
               <li>
                 <Link to="/Form">Question</Link>
-              </li>
-              <li>
-                <Link to="/Player">Player</Link>
               </li>
               <li onClick={() => logout({ returnTo: window.location.origin })}>
                 LOGOUT
