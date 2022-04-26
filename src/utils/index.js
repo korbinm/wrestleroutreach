@@ -30,6 +30,37 @@ export const getQuestions = async () =>{
   return data
 }
 
+// export const getAnswers = async (email) => {
+//
+//   const result = [];
+//   await client.query(
+//       q.Map(
+//           q.Paginate(
+//               q.Match(
+//                   q.Index('answers_by_email'),email
+//               )
+//           ),
+//           q.Lambda('ref',q.Get(q.Var('ref')))
+//       )
+//   ).then(faunaResponse => {
+//     const dataArray = faunaResponse.data;
+//     dataArray.forEach(s => {
+//       const data = s.data;
+//       result.push({
+//         id: data.id,
+//         customerEmail:data.customerEmail,
+//         managerEmail: data.managerEmail,
+//         customerVideo: data.customerVideo,
+//         responseVideo: data.responseVideo,
+//         notes: data.notes,
+//         answered: data.answered
+//       })
+//     })
+//   } )
+//   console.log("result id", result[0].customerEmail)
+//   return result;
+// }
+
 export const getAnswers = async (email) => {
   console.log("util/index hits");
   const { data } = await client.query(
@@ -39,19 +70,17 @@ export const getAnswers = async (email) => {
     )
   );
   console.log("util/index database", data);
-  const answers = data.map(answer =>{
-    answer.id = answer.ref.id;
-    delete answer.ref;
-    return answer;
-  })
-  return answers;
+
+  return data;
 };
 
 export const createQuestion = async (customerEmail, customerVideo, notes, answered) => {
-  const mangerEmail = null;
-  const responseVideo = null;
-    return await client.query(
-    q.Create(q.Collection("Questions"), {
+  const mangerEmail = "";
+  const responseVideo = "";
+  let data
+  data = await client.query(
+    q.Create(q.Collection("Answers"),
+        {
       data: {
         customerEmail,
           mangerEmail,
@@ -62,6 +91,9 @@ export const createQuestion = async (customerEmail, customerVideo, notes, answer
       },
     })
   );
+    const answer =data.data
+  answer.id = data.ref.value.id
+  return answer
 };
 
 //export const getAllCustomers;

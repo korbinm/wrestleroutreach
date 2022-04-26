@@ -11,7 +11,7 @@ import {
   Var,
 } from "faunadb";
 import { getAnswers } from "../utils";
-import useSWR from "swr";
+
 import { useNavigate } from "react-router-dom";
 import Display from "./displayAnswers";
 
@@ -19,51 +19,19 @@ function Dashboard() {
   const { isLoading } = useAuth0();
   const { user } = useAuth0();
   const navigate = useNavigate();
-  // const answers = fetch("../api/answers.js");
-  // let email = parseJSON(user.email);
-
-  CreateAccessProvider({
-    name: "Auth0",
-    issuer: "https://<auth0 domain>/",
-    jwks_uri: "https://<auth0 domain>/.well-known/jwks.json",
-    roles: [
-      {
-        role: Role("Managers"),
-        predicate: Query(
-          Lambda(
-            "accessToken",
-            ContainsValue(
-              "Manager",
-              Select(["https:/db.fauna.com/roles"], Var("accessToken"))
-            )
-          )
-        ),
-      },
-      {
-        role: Role("Customers"),
-        predicate: Query(
-          Lambda(
-            "accessToken",
-            ContainsValue(
-              "Customers",
-              Select(["https:/db.fauna.com/roles"], Var("accessToken"))
-            )
-          )
-        ),
-      },
-    ],
-  });
+  const [test, setTest] = useState([]);
   let email;
   const [answers, setAnswers] = useState([]);
+
+
+
   if (isLoading) {
-    console.log("test");
     setAnswers([]);
     return <h1>Loading</h1>;
   } else {
     email = user.email;
   }
 
-  const [test, setTest] = useState([]);
 
   useEffect(() => {
     async function fetchAnswers(){
@@ -72,17 +40,7 @@ function Dashboard() {
     }
     fetchAnswers();
   }, [test]);
-
-  //simple to print out
-// useEffect(()=>{
-//   setAnswers([1,2,3]);
-// })
-
-
-
-  console.log("Answers in effect:", answers);
-  console.log("Destructure?", answers.data);
-
+console.log("Dashboard:", answers)
   return (
     <div>
       <div>
@@ -95,10 +53,55 @@ function Dashboard() {
           Pay Now
         </button>
       </div>
-      {/*{answers !== [] ? Display(answers) : <h1>No videos</h1>}*/}
+      <div id="videos">
+      <table>
+      {answers.length > 0 ? answers.map((answer, idx) =>
+      <Display
+        key={idx}
+        customerVideo={answer.data.customerVideo}
+        responseVideo = {answer.data.responseVideo}
+        notes = {answer.data.notes}
+        answered = {answer.data.answered}
+
+
+      />
+        ) : 'No videos submitted yet'}
+    </table>
+      </div>
     </div>
-    //<button onClick={createQuestion(email,"test url", "test question")}>Test</button>
   );
 }
 
 export default Dashboard;
+
+// CreateAccessProvider({
+//   name: "Auth0",
+//   issuer: "https://<auth0 domain>/",
+//   jwks_uri: "https://<auth0 domain>/.well-known/jwks.json",
+//   roles: [
+//     {
+//       role: Role("Managers"),
+//       predicate: Query(
+//         Lambda(
+//           "accessToken",
+//           ContainsValue(
+//             "Manager",
+//             Select(["https:/db.fauna.com/roles"], Var("accessToken"))
+//           )
+//         )
+//       ),
+//     },
+//     {
+//       role: Role("Customers"),
+//       predicate: Query(
+//         Lambda(
+//           "accessToken",
+//           ContainsValue(
+//             "Customers",
+//             Select(["https:/db.fauna.com/roles"], Var("accessToken"))
+//           )
+//         )
+//       ),
+//     },
+//   ],
+// });
