@@ -48,7 +48,7 @@ header li {
 }
 header li:hover{
   cursor: pointer;
-  text-underline: #f4f4f4;
+  /* text-underline: #f4f4f4; */
 }
 
 header #branding {
