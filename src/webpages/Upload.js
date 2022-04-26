@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import "../App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import Player from "./Player.js";
+
 function App() {
   const inputRef = useRef(null);
   const [data, setData] = useState("");
@@ -12,6 +13,7 @@ function App() {
   };
   return (
     <div>
+      {Player("hello")}
       <div>
         <h1>Chat</h1>
       </div>

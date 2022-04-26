@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
 import { storage } from "../firebase";
@@ -40,6 +40,9 @@ function Form() {
       }
     );
   };
+  useEffect(() => {
+    console.log("Video URL:", videoURL);
+  }, [videoURL]);
   return (
     <div>
       <div>

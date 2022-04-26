@@ -4,13 +4,31 @@ const faunadb = require("faunadb");
 const q = faunadb.query;
 //creates a customer field
 
-export const userLogin = async (email, password) =>
-  client
-    .query(
-      q.Login(q.Match(q.Index("users_by_email"), email), { password: password })
-    )
-    .then((ret) => console.log(ret))
-    .catch((err) => console.error("Error: %s", err));
+export const createAnswer = async (customerEmail, managerEmail, customerVideo, responseVideo, notes) =>{
+  const answered = true;
+    return await client.query(
+      q.Create(q.Collection("Answers"), {
+        data: {
+          customerEmail,
+          managerEmail,
+          customerVideo,
+          responseVideo,
+          notes,
+            answered
+        }
+      })
+  )
+}
+
+export const getQuestions = async () =>{
+  const {data} = await client.query(
+      q.Map(
+          q.Paginate(q.Match(q.Index("unanswered_questions"), false)),
+          q.Lambda("ref", q.Get(q.Var("ref")))
+      )
+  );
+  return data
+}
 
 export const getAnswers = async (email) => {
   console.log("util/index hits");
@@ -24,15 +42,18 @@ export const getAnswers = async (email) => {
   return data;
 };
 
-export const createQuestion = async (email, url, question) => {
-  console.log("this hits");
-  console.log(email, url, question);
-  return await client.query(
+export const createQuestion = async (customerEmail, customerVideo, notes, answered) => {
+  const mangerEmail = null;
+  const responseVideo = null;
+    return await client.query(
     q.Create(q.Collection("Questions"), {
       data: {
-        email,
-        url,
-        question,
+        customerEmail,
+          mangerEmail,
+        customerVideo,
+          responseVideo,
+        notes,
+        answered
       },
     })
   );
