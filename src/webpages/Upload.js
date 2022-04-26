@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "../App.css";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import Player from "./Player.js";
 function App() {
   const inputRef = useRef(null);
   const [data, setData] = useState("");
@@ -14,6 +14,9 @@ function App() {
     <div>
       <div>
         <h1>Chat</h1>
+      </div>
+      <div>
+        <Player />
       </div>
       <div>
         <textarea id="chat" rows="15" readonly value={data}></textarea>

@@ -10,6 +10,14 @@ button{
   padding: 10px 24px;
   color:#FFFFFF;
 }
+input[type=file] {
+  background-color: #FF6A3D;
+  border-radius: 3px;
+  border-color: #1A2238;
+  padding: 10px 24px;
+  color:#FFFFFF;
+}
+
 button:hover{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
 }
