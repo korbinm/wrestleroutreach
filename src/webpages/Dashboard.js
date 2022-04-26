@@ -73,9 +73,6 @@ function Dashboard() {
   return (
     <div>
       <div>
-        <h1>Dashboard</h1>
-      </div>
-      <div>
         <p>Pay 20$ now to ask a question to one of our expert coaches!</p>
         <button
           onClick={() => {

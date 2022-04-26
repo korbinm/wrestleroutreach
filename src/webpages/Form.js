@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef, useEffect} from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
 import { storage } from "../firebase";
@@ -7,7 +7,7 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 function Form() {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
-  const refVideo = useRef(null);
+  const [videoURL, setUrl] = useState("");
   const refQuestion = useRef(null);
   var question = ""; //this contains the question that the user has
 
@@ -32,10 +32,14 @@ function Form() {
       },
       (err) => console.log(err),
       () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => console.log(url));
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => setUrl(url));
       }
     );
+
   };
+  useEffect(()=>{
+    console.log("Video URL:", videoURL)
+  }, [videoURL])
   return (
     <div>
       <div>

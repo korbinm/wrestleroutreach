@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import "../App.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import Login from "./Login.js";
+import Player from "./Player";
 
 function App() {
   const inputRef = useRef(null);
@@ -12,6 +14,7 @@ function App() {
   };
   return (
     <div>
+        {Player("hello")}
       <div>
         <h1>Chat</h1>
       </div>
