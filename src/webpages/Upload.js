@@ -13,13 +13,11 @@ function App() {
   };
   return (
     <div>
-      {Player("hello")}
+      {Player("https://www.youtube.com/watch?v=dQw4w9WgXcQ")}
       <div>
         <h1>Chat</h1>
       </div>
-      <div>
-        <Player />
-      </div>
+      <div>{Player("https://www.youtube.com/watch?v=dQw4w9WgXcQ")}</div>
       <div>
         <textarea id="chat" rows="15" readonly value={data}></textarea>
       </div>
