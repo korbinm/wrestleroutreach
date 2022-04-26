@@ -24,12 +24,6 @@ const Layout = () => {
               <li>
                 <Link to="/dashboard">Dashboard</Link>
               </li>
-              <li>
-                <Link to="/upload">Answer</Link>
-              </li>
-              <li>
-                <Link to="/Form">Question</Link>
-              </li>
               <li onClick={() => logout({ returnTo: window.location.origin })}>
                 LOGOUT
               </li>

@@ -9,14 +9,15 @@ import Display from "./displayAnswers";
 import {updateResponseVideo} from "../utils";
 
 const updateResponse = async(DBID, managerEmail,responseURL) =>{
+
     await updateResponseVideo(DBID, managerEmail,responseURL, true)
 }
+//value of textbox for notes
 const updateNotes = (newNote, oldNote,name) =>
 {
     const finalNote = oldNote + name + ": " + newNote;
     const navigate = useNavigate();
     console.log("Final Note", finalNote)
-    navigate('/Dashboard');
 }
 
 
@@ -107,6 +108,7 @@ function App(){
               {progress === 100  && url.length > 10? <button
                   onClick={() => {
                       updateResponse(id,user.email,url)
+                      navigate('/Dashboard')
                   }}
               >
                   Submit Video Answer
