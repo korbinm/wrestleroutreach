@@ -40,9 +40,6 @@ function Form() {
       }
     );
   };
-  useEffect(() => {
-    console.log("Video URL:", videoURL);
-  }, [videoURL]);
   return (
     <div>
       <div>
