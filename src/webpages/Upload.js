@@ -39,10 +39,10 @@ function App() {
       }
     );
   };
-  /***************************************************************************************************************** */
   const onClick = () => {
     setData(data + user.name + ": " + inputRef.current.value + "\n");
   };
+
   return (
     <div>
       <div>

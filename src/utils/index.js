@@ -39,14 +39,17 @@ export const getAnswers = async (email) => {
     )
   );
   console.log("util/index database", data);
+
   return data;
 };
 
 export const createQuestion = async (customerEmail, customerVideo, notes, answered) => {
-  const mangerEmail = null;
-  const responseVideo = null;
-    return await client.query(
-    q.Create(q.Collection("Questions"), {
+  const mangerEmail = "";
+  const responseVideo = "";
+  let data
+  data = await client.query(
+    q.Create(q.Collection("Answers"),
+        {
       data: {
         customerEmail,
           mangerEmail,
@@ -57,6 +60,9 @@ export const createQuestion = async (customerEmail, customerVideo, notes, answer
       },
     })
   );
+    const answer =data.data
+  answer.id = data.ref.value.id
+  return answer
 };
 
 //export const getAllCustomers;

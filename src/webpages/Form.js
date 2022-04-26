@@ -5,6 +5,7 @@ import { storage } from "../firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import Player from "./Player.js";
 import { useAuth0 } from "@auth0/auth0-react";
+import {createQuestion} from "../utils";
 
 function Form() {
   const [progress, setProgress] = useState(0);
@@ -20,6 +21,8 @@ function Form() {
     const file = e.target[0].files[0];
     uploadFiles(file);
   };
+
+
 
   const uploadFiles = (file) => {
     if (!file) return;
@@ -40,6 +43,14 @@ function Form() {
       }
     );
   };
+  const submitQuestion =() =>{
+      async function createdQuestion(){
+        await createQuestion(user.email, url, question, false);
+      }
+      createdQuestion();
+      console.log('test')
+    }
+
   return (
     <div>
       <div>
@@ -71,7 +82,7 @@ function Form() {
         <div>
           <button
             onClick={() => {
-              console.log(question); //this should be uploaded to the database instead of console.logged
+              submitQuestion(); //this should be uploaded to the database instead of console.logged
               navigate("/Confirmation");
             }}
           >

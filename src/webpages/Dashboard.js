@@ -10,66 +10,53 @@ import {
   Select,
   Var,
 } from "faunadb";
-import { getAnswers } from "../utils";
-import useSWR from "swr";
+import {getAnswers, getQuestions} from "../utils";
+
 import { useNavigate } from "react-router-dom";
+import Display from "./displayAnswers";
 
 function Dashboard() {
   const { isLoading } = useAuth0();
   const { user } = useAuth0();
   const navigate = useNavigate();
-  // const answers = fetch("../api/answers.js");
-  // let email = parseJSON(user.email);
-
-  CreateAccessProvider({
-    name: "Auth0",
-    issuer: "https://<auth0 domain>/",
-    jwks_uri: "https://<auth0 domain>/.well-known/jwks.json",
-    roles: [
-      {
-        role: Role("Managers"),
-        predicate: Query(
-          Lambda(
-            "accessToken",
-            ContainsValue(
-              "Manager",
-              Select(["https:/db.fauna.com/roles"], Var("accessToken"))
-            )
-          )
-        ),
-      },
-      {
-        role: Role("Customers"),
-        predicate: Query(
-          Lambda(
-            "accessToken",
-            ContainsValue(
-              "Customers",
-              Select(["https:/db.fauna.com/roles"], Var("accessToken"))
-            )
-          )
-        ),
-      },
-    ],
-  });
+  const [test, setTest] = useState([]);
   let email;
+  const [answers, setAnswers] = useState([]);
+  let manager = false;
+
+
+
   if (isLoading) {
-    console.log("test");
+    setAnswers([]);
     return <h1>Loading</h1>;
   } else {
     email = user.email;
   }
-  const [answers, setAnswers] = useState([]);
-  const [test, setTest] = useState([]);
 
-  useEffect(() => {
-    getAnswers(email).then((answers) => setAnswers(answers));
-  }, [test]);
-  // const answers = getAnswers(email).then((result) => {return result});
-  console.log("Answers in effect:", answers);
-  const { value } = answers;
-  console.log("test", value);
+  if (user.email === "korbinmeink@gmail.com" || user.email ==="akcalebh@gmail.com"){
+    manager = true
+  }
 
+  if (!manager) {
+    useEffect(() => {
+      async function fetchAnswers(){
+        let holder = await getAnswers(email)
+        setAnswers(holder)
+      }
+      fetchAnswers();
+    }, [test]);
+  } else
+  {
+    useEffect(() => {
+      async function fetchAnswers(){
+        let holder = await getQuestions()
+        setAnswers(holder)
+      }
+      fetchAnswers();
+    }, [test]);
+  }
+
+console.log("Dashboard:", answers)
   return (
     <div>
       <div>
@@ -82,9 +69,66 @@ function Dashboard() {
           Pay Now
         </button>
       </div>
+      <div id="videos">
+      <table>
+      {!manager &&
+        answers.length > 0 ? answers.map((answer, idx) =>
+      <Display
+        key={idx}
+        customerVideo={answer.data.customerVideo}
+        responseVideo = {answer.data.responseVideo}
+        notes = {answer.data.notes}
+        answered = {answer.data.answered}
+      />
+        ) : 'No videos submitted yet'}
+        {manager &&
+        answers.length >0 ? answers.map((answer, idx)=>
+        <Display
+            key={idx}
+            customerVideo={answer.data.customerVideo}
+            responseVideo = {answer.data.responseVideo}
+            notes = {answer.data.notes}
+            answered = {answer.data.answered}
+        />
+
+        ): 'No videos to answer yet'}
+
+    </table>
+      </div>
     </div>
-    //<button onClick={createQuestion(email,"test url", "test question")}>Test</button>
   );
 }
 
 export default Dashboard;
+
+// CreateAccessProvider({
+//   name: "Auth0",
+//   issuer: "https://<auth0 domain>/",
+//   jwks_uri: "https://<auth0 domain>/.well-known/jwks.json",
+//   roles: [
+//     {
+//       role: Role("Managers"),
+//       predicate: Query(
+//         Lambda(
+//           "accessToken",
+//           ContainsValue(
+//             "Manager",
+//             Select(["https:/db.fauna.com/roles"], Var("accessToken"))
+//           )
+//         )
+//       ),
+//     },
+//     {
+//       role: Role("Customers"),
+//       predicate: Query(
+//         Lambda(
+//           "accessToken",
+//           ContainsValue(
+//             "Customers",
+//             Select(["https:/db.fauna.com/roles"], Var("accessToken"))
+//           )
+//         )
+//       ),
+//     },
+//   ],
+// });
