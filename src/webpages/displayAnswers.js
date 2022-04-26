@@ -15,13 +15,12 @@ function Display({customerVideo, responseVideo, notes,answered}) {
     return (
         <div>
                     <td>
-                        <iframe width="420" height ="315" src={customerVideo}>Customer's Question</iframe>
+                        <iframe allowFullScreen={true}  width="420" height ="315" src={customerVideo}>Customer's Question</iframe>
                     </td>
                     <td>
                         {answered ?
                         <iframe width="420" height ="315" src={responseVideo}>Customer's Question</iframe> :
                             <p>There has not been a response yet!</p>}
-
                     </td>
 </div>
     );

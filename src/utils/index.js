@@ -30,37 +30,6 @@ export const getQuestions = async () =>{
   return data
 }
 
-// export const getAnswers = async (email) => {
-//
-//   const result = [];
-//   await client.query(
-//       q.Map(
-//           q.Paginate(
-//               q.Match(
-//                   q.Index('answers_by_email'),email
-//               )
-//           ),
-//           q.Lambda('ref',q.Get(q.Var('ref')))
-//       )
-//   ).then(faunaResponse => {
-//     const dataArray = faunaResponse.data;
-//     dataArray.forEach(s => {
-//       const data = s.data;
-//       result.push({
-//         id: data.id,
-//         customerEmail:data.customerEmail,
-//         managerEmail: data.managerEmail,
-//         customerVideo: data.customerVideo,
-//         responseVideo: data.responseVideo,
-//         notes: data.notes,
-//         answered: data.answered
-//       })
-//     })
-//   } )
-//   console.log("result id", result[0].customerEmail)
-//   return result;
-// }
-
 export const getAnswers = async (email) => {
   console.log("util/index hits");
   const { data } = await client.query(

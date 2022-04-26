@@ -10,7 +10,7 @@ import {
   Select,
   Var,
 } from "faunadb";
-import { getAnswers } from "../utils";
+import {getAnswers, getQuestions} from "../utils";
 
 import { useNavigate } from "react-router-dom";
 import Display from "./displayAnswers";
@@ -22,6 +22,7 @@ function Dashboard() {
   const [test, setTest] = useState([]);
   let email;
   const [answers, setAnswers] = useState([]);
+  let manager = false;
 
 
 
@@ -32,14 +33,29 @@ function Dashboard() {
     email = user.email;
   }
 
+  if (user.email === "korbinmeink@gmail.com" || user.email ==="akcalebh@gmail.com"){
+    manager = true
+  }
 
-  useEffect(() => {
-    async function fetchAnswers(){
-      let holder = await getAnswers(email)
-      setAnswers(holder)
-    }
-    fetchAnswers();
-  }, [test]);
+  if (!manager) {
+    useEffect(() => {
+      async function fetchAnswers(){
+        let holder = await getAnswers(email)
+        setAnswers(holder)
+      }
+      fetchAnswers();
+    }, [test]);
+  } else
+  {
+    useEffect(() => {
+      async function fetchAnswers(){
+        let holder = await getQuestions()
+        setAnswers(holder)
+      }
+      fetchAnswers();
+    }, [test]);
+  }
+
 console.log("Dashboard:", answers)
   return (
     <div>
@@ -55,17 +71,28 @@ console.log("Dashboard:", answers)
       </div>
       <div id="videos">
       <table>
-      {answers.length > 0 ? answers.map((answer, idx) =>
+      {!manager &&
+        answers.length > 0 ? answers.map((answer, idx) =>
       <Display
         key={idx}
         customerVideo={answer.data.customerVideo}
         responseVideo = {answer.data.responseVideo}
         notes = {answer.data.notes}
         answered = {answer.data.answered}
-
-
       />
         ) : 'No videos submitted yet'}
+        {manager &&
+        answers.length >0 ? answers.map((answer, idx)=>
+        <Display
+            key={idx}
+            customerVideo={answer.data.customerVideo}
+            responseVideo = {answer.data.responseVideo}
+            notes = {answer.data.notes}
+            answered = {answer.data.answered}
+        />
+
+        ): 'No videos to answer yet'}
+
     </table>
       </div>
     </div>
