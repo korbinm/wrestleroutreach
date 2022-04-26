@@ -107,6 +107,10 @@ header .highlight, header .current a {
   height: 90px;
 }
 
+#sidebyside {
+  float: left;
+}
+
 #services {
   display: flex;
   font-size: 30px;
@@ -232,12 +236,4 @@ header .highlight, header .current a {
 #videos th, td{
   border-bottom: 1px solid #1A2238;
   padding-bottom: 15px;
-}
-
-#chat {
-  width: 95%;
-}
-
-#uploadChat {
-  width: 30%;
 }
