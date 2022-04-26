@@ -22,8 +22,6 @@ function Form() {
     uploadFiles(file);
   };
 
-
-
   const uploadFiles = (file) => {
     if (!file) return;
     const storageRef = ref(storage, file.name);
@@ -70,24 +68,18 @@ function Form() {
           <br></br>
           <button type="submit">Upload Video</button>
         </form>
+
         <div>
-          <div>
-            <p>
-              Preview. Do not submit to coach until you can watch the video
-              under preview
-            </p>
-          </div>
-          <div>{Player(url)}</div>
-        </div>
-        <div>
-          <button
-            onClick={() => {
-              submitQuestion(); //this should be uploaded to the database instead of console.logged
-              navigate("/Confirmation");
-            }}
-          >
-            Submit to a Coach
-          </button>
+          {progress === 100 && url.length > 10 ?
+              (<button
+                  onClick={() => {
+                    submitQuestion(); //this should be uploaded to the database instead of console.logged
+                    navigate("/Confirmation");
+                  }}
+              >
+                Submit to a Coach
+              </button>
+            ): ''}
         </div>
       </div>
     </div>

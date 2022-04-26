@@ -4,20 +4,18 @@ const faunadb = require("faunadb");
 const q = faunadb.query;
 //creates a customer field
 
-export const createAnswer = async (customerEmail, managerEmail, customerVideo, responseVideo, notes) =>{
-  const answered = true;
-    return await client.query(
-      q.Create(q.Collection("Answers"), {
-        data: {
-          customerEmail,
-          managerEmail,
-          customerVideo,
-          responseVideo,
-          notes,
+export const updateResponseVideo = async (id, managerEmail, responseVideo, answered) => {
+return await client.query(
+    q.Update(
+        q.Ref(q.Collection("Answers"),id),
+        { data:{
+            managerEmail,
+            responseVideo,
             answered
+          }
         }
-      })
-  )
+    )
+)
 }
 
 export const getQuestions = async () =>{
@@ -44,7 +42,7 @@ export const getAnswers = async (email) => {
 };
 
 export const createQuestion = async (customerEmail, customerVideo, notes, answered) => {
-  const mangerEmail = "";
+  const managerEmail = "";
   const responseVideo = "";
   let data
   data = await client.query(
@@ -52,7 +50,7 @@ export const createQuestion = async (customerEmail, customerVideo, notes, answer
         {
       data: {
         customerEmail,
-          mangerEmail,
+          managerEmail,
         customerVideo,
           responseVideo,
         notes,

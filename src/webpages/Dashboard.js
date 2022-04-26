@@ -12,12 +12,14 @@ import {
 } from "faunadb";
 import {getAnswers, getQuestions} from "../utils";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import Display from "./displayAnswers";
 
 function Dashboard() {
   const { isLoading } = useAuth0();
   const { user } = useAuth0();
+  const {state} = useLocation();
+
   const navigate = useNavigate();
   const [test, setTest] = useState([]);
   let email;
@@ -75,6 +77,7 @@ console.log("Dashboard:", answers)
         answers.length > 0 ? answers.map((answer, idx) =>
       <Display
         key={idx}
+        id = {answer.ref.value.id}
         customerVideo={answer.data.customerVideo}
         responseVideo = {answer.data.responseVideo}
         notes = {answer.data.notes}
@@ -85,6 +88,7 @@ console.log("Dashboard:", answers)
         answers.length >0 ? answers.map((answer, idx)=>
         <Display
             key={idx}
+            id = {answer.ref.value.id}
             customerVideo={answer.data.customerVideo}
             responseVideo = {answer.data.responseVideo}
             notes = {answer.data.notes}
