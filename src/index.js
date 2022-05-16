@@ -12,7 +12,6 @@ import LogoutButton from "./webpages/Logout";
 import Upload from "./webpages/Upload.js";
 import Form from "./webpages/Form.js";
 import Confirmation from "./webpages/Confirmation.js";
-import Player from "./webpages/Player.js";
 function App() {
   return (
     <BrowserRouter>
@@ -26,7 +25,6 @@ function App() {
           <Route path="Upload" element={<Upload />} />
           <Route path="Form" element={<Form />} />
           <Route path="Confirmation" element={<Confirmation />} />
-          <Route path="Player" element={<Player />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

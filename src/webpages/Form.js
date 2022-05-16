@@ -1,20 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
 import { storage } from "../firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import Player from "./Player.js";
 import { useAuth0 } from "@auth0/auth0-react";
-import {createQuestion} from "../utils";
+import { createQuestion } from "../utils";
 
 function Form() {
-  const [progress, setProgress] = useState(0);
-  const [url, setURL] = useState("");
-  const navigate = useNavigate();
-  const refQuestion = useRef(null);
-  const [question, getQuestion] = useState("");
+  const [progress, setProgress] = useState(0); //used for the progress bar
+  const [url, setURL] = useState(""); //used in order to store the url of the video once submitted
+  const navigate = useNavigate(); //navigate takes us to a new page
+  const refQuestion = useRef(null); //contains a reference to the text box data for uploading to the chat
+  const [question, getQuestion] = useState(""); //used with refQuestion to set the value of question which is exported
   const { user } = useAuth0(); //this takes the username from auth0
 
+  //this function is called when the user submits a form
   const formHandler = (e) => {
     getQuestion(user.name + ": " + refQuestion.current.value);
     e.preventDefault();
@@ -22,6 +22,7 @@ function Form() {
     uploadFiles(file);
   };
 
+  //this function gets called to upload the user video to the cloud
   const uploadFiles = (file) => {
     if (!file) return;
     const storageRef = ref(storage, file.name);
@@ -41,13 +42,14 @@ function Form() {
       }
     );
   };
-  const submitQuestion =() =>{
-      async function createdQuestion(){
-        await createQuestion(user.email, url, question, false);
-      }
-      createdQuestion();
-      console.log('test')
+
+  //this function submits the question to the database
+  const submitQuestion = () => {
+    async function createdQuestion() {
+      await createQuestion(user.email, url, question, false);
     }
+    createdQuestion();
+  };
 
   return (
     <div>
@@ -70,16 +72,18 @@ function Form() {
         </form>
 
         <div>
-          {progress === 100 && url.length > 10 ?
-              (<button
-                  onClick={() => {
-                    submitQuestion(); //this should be uploaded to the database instead of console.logged
-                    navigate("/Confirmation");
-                  }}
-              >
-                Submit to a Coach
-              </button>
-            ): ''}
+          {progress === 100 && url.length > 10 ? (
+            <button
+              onClick={() => {
+                submitQuestion();
+                navigate("/Confirmation");
+              }}
+            >
+              Submit to a Coach
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
